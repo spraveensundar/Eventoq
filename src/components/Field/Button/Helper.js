@@ -1,0 +1,41 @@
+import { colors } from "d:/React Native/ReactNative/src/helpers/variables";
+
+export const getColors = (color, type) => {
+    var textColor = (type === "secondary") ? colors.orange : colors.white;
+    var backgroundColor = (type === "secondary") ? null : colors.orange;
+
+    if (color === 'grey') {
+        return {
+            backgroundColor: backgroundColor,
+            textColor: colors.grey
+        }
+    }
+    if (color === 'purple') {
+        return {
+            backgroundColor: colors.purple,
+            textColor: colors.white
+        }
+    }
+    if (color === 'royal') {
+        return {
+            backgroundColor: colors.royal,
+            textColor: colors.white
+        }
+    }
+    if (color === 'sand') {
+        return {
+            backgroundColor: colors.sand,
+            textColor: colors.white
+        }
+    }
+    if (color === 'blue') {
+        return {
+            backgroundColor: colors.pacificBlue,
+            textColor: colors.white
+        }
+    }
+    return {
+        backgroundColor: backgroundColor,
+        textColor: textColor
+    }
+}
