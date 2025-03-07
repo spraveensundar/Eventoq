@@ -1,14 +1,15 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Platform } from 'react-native';
 
 import Home from '../pages/DashBoard/Home';
 import Profile from '../pages/DashBoard/Profile';
 import Bookings from '../pages/DashBoard/Bookings';
 import Listings from '../pages/DashBoard/Listings';
-import BottomItem from '../components/BottomItem';
+
 import { navigate } from '../helpers/navigation';
+import BottomItem from '../components/BottomItem';
 import { colors, normalize } from '../helpers/variables';
-import { Platform } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 

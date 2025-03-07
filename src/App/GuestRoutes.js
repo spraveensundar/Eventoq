@@ -4,9 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DashBoard from './DashBoard';
 import Login from '../pages/Guest/Login';
 import SingUp from '../pages/Guest/SingUp';
-import Verification from '../pages/Guest/Verification';
 import OTP from '../pages/Guest/Verification/OTP';
-
+import Verification from '../pages/Guest/Verification';
 
 const useGuestRoutes = () => {
 	const Stack = createNativeStackNavigator();

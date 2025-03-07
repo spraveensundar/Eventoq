@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import Spinner from './Spinner';
 import { colors } from '../helpers/variables';
 

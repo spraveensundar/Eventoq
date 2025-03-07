@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { colors, fontScale, size } from "../../../helpers/variables";
+import { colors, fontScale, normalize, size } from "../../../helpers/variables";
 
 const styles = StyleSheet.create({
     buttonContainer: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         borderRadius: size.tiny,
         height: size.xxxxx_medium,
         flexDirection: 'row',
-        width: 330
+        width: normalize(330)
     },
     rightContainer: {
         flex: 1,
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
         marginRight: size.xx_tiny,
         color: colors.white,
         fontSize: fontScale(20)
-    },
+    }
 })
+
 export default styles;

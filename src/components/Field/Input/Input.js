@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { TextInput } from 'react-native';
 
 import FormGroup from '../FormGroup';
+import { colors } from '../../../helpers/variables';
 
 import styles from './styles';
 
@@ -12,8 +13,7 @@ const Input = (props) => {
         disabled = false,
         meta,
         label,
-        secureTextEntry,
-        style = {}
+        secureTextEntry
     } = props;
 
     const [focus, setFocus] = useState(false);
@@ -48,7 +48,7 @@ const Input = (props) => {
                 onChangeText={handleOnChange}
                 onFocus={() => setFocus(true)}
                 style={styles.inputContainer}
-                placeholderTextColor={"#A1A1A1"}
+                placeholderTextColor={colors.dawn}
                 secureTextEntry={secureTextEntry}
                 underlineColorAndroid="transparent"
             />

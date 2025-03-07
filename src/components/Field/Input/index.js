@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import Input from './Input';
+import InputOTP from './OTP';
 import Checkbox from './Checkbox';
 import { cleanInput } from '../../../helpers/input';
-import InputOTP from './OTP';
-
 
 export default function FieldInput(props) {
     const {

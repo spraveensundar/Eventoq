@@ -22,18 +22,6 @@ export const getColors = (color, type) => {
             textColor: colors.white
         }
     }
-    if (color === 'sand') {
-        return {
-            backgroundColor: colors.sand,
-            textColor: colors.white
-        }
-    }
-    if (color === 'blue') {
-        return {
-            backgroundColor: colors.pacificBlue,
-            textColor: colors.white
-        }
-    }
     return {
         backgroundColor: backgroundColor,
         textColor: textColor

@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, Image, } from 'react-native';
-import { colors, normalize, size } from '../helpers/variables';
-import { Text } from './Typography';
-import styles from './styles';
+import { View } from 'react-native';
+
 import Icon from './Icon';
+import { Text } from './Typography';
+import { colors, size } from '../helpers/variables';
+
+import styles from './styles';
 
 const BottomItem = ({ icon, isActive, text }) => {
     return (
-        <View style={{ paddingTop: size.xxxx_tiny, justifyContent: 'space-evenly', flex: 1 }}>
+        <View style={styles.bottomItem}>
             <View style={[styles.btmitemview]}>
                 <Icon
                     icon={icon}
@@ -15,8 +17,8 @@ const BottomItem = ({ icon, isActive, text }) => {
                     color={colors.black}
                 />
             </View>
-            <View style={{ paddingVertical: size.tiny, flexWrap: 'wrap' }}>
-                <Text tag='h1' style={{ fontWeight: isActive ? '600' : '500', color: isActive ? colors.black : colors.dark, textAlign: 'center' }}>{text}asdf</Text>
+            <View style={styles.text}>
+                <Text tag='h1' style={{ fontWeight: isActive ? '600' : '500', color: isActive ? colors.black : colors.dark, textAlign: 'center' }}>{text}</Text>
             </View>
         </View>
     )

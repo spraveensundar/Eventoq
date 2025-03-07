@@ -1,13 +1,15 @@
-import { View, Image, StyleSheet, Dimensions } from 'react-native';
 import React from 'react';
-import { SVG_WAVE } from '../helpers/svg';
-import { Title } from '../components/Typography';
-import Svg, { Path } from 'react-native-svg';
+import { View, Image } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Svg, { Path } from 'react-native-svg';
 
 import { event } from '../assets/images';
-import { colors, normalize, size } from '../helpers/variables';
+import { SVG_WAVE } from '../helpers/svg';
+import { Title } from '../components/Typography';
+import { colors, size } from '../helpers/variables';
+
+import styles from './styles';
 
 const GuestLayout = ({ children, title }) => {
     const insets = useSafeAreaInsets();
@@ -37,29 +39,5 @@ const GuestLayout = ({ children, title }) => {
         </KeyboardAwareScrollView>
     );
 };
-
-const styles = StyleSheet.create({
-    topContainer: {
-        backgroundColor: colors.orange,
-        alignItems: "center",
-        justifyContent: "center",
-        position: "relative"
-    },
-    image: {
-        width: "60%",
-        height: normalize(180),
-    },
-    wave: {
-        position: "absolute",
-        bottom: -70,
-        left: 0,
-    },
-    contentContainer: {
-        flex: 1,
-        alignItems: 'center',
-        marginTop: size.big,
-        paddingHorizontal: size.xx_normal
-    },
-});
 
 export default GuestLayout;

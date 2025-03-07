@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React, { useEffect, useRef } from 'react'
-import { OtpInput } from 'react-native-otp-entry'
+import { View } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { OtpInput } from 'react-native-otp-entry';
+
 import styles from './styles';
 
 const InputOTP = (props) => {
     const {
         length = 6,
-        meta: { error = "" },
         isInputSecure = false,
         input: { onChange, value }
     } = props;

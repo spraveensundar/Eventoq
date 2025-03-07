@@ -3,15 +3,12 @@ import { StyleSheet } from "react-native";
 import { colors, fonts, fontScale, normalize, size } from "../../../helpers/variables";
 
 const styles = StyleSheet.create({
-
-    container: {
-    },
     inputContainer: {
         width: normalize(330),
         paddingHorizontal: size.x_small,
         fontWeight: "400",
         height: size.big,
-        lineHeight: fontScale(21),
+        lineHeight: fontScale(21)
     },
     checkboxWrapper: {
         flexDirection: "row",

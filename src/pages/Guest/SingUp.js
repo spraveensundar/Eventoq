@@ -1,17 +1,20 @@
-import { View, Text } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
 import { combine, confirmation, email, length, required } from 'redux-form-validators';
-import { colors, fontScale } from '../../helpers/variables';
 import { reduxForm, Field } from 'redux-form';
+import get from "lodash";
 
-import get from "lodash"
-import { getPasswordValidationRegex, passwordValidator } from '../../helpers/input';
-import { showToast } from '../../helpers/notify';
 import { Button, Input } from '../../components/Field';
-import styles from './styles';
+
+import { showToast } from '../../helpers/notify';
 import { navigate } from '../../helpers/navigation';
-import GuestLayout from '../../layout/Guest';
+import { colors, fontScale } from '../../helpers/variables';
+import { getPasswordValidationRegex, passwordValidator } from '../../helpers/input';
+
 import useSetup from '../../hooks/useAuth';
+import GuestLayout from '../../layout/Guest';
+
+import styles from './styles';
 
 const SingUp = ({ invalid, handleSubmit, reset }) => {
     const { crud, submitRegister } = useSetup();

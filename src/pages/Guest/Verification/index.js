@@ -1,16 +1,20 @@
-import React from 'react'
-
-import GuestLayout from '../../../layout/Guest';
-import { Text } from '../../../components/Typography';
-import styles from '../styles';
-import { Button, Input } from '../../../components/Field';
-import { required } from 'redux-form-validators';
-import { reduxForm, Field } from 'redux-form';
-import { colors, fontScale, size } from '../../../helpers/variables';
+import React from 'react';
 import { View } from 'react-native';
-import { goBack, navigate } from '../../../helpers/navigation';
-import useSetup from '../../../hooks/useAuth';
+
+import { reduxForm, Field } from 'redux-form';
+import { required } from 'redux-form-validators';
+
+import { Text } from '../../../components/Typography';
+import { Button, Input } from '../../../components/Field';
+
 import { showToast } from '../../../helpers/notify';
+import { goBack, navigate } from '../../../helpers/navigation';
+import { colors, fontScale, size } from '../../../helpers/variables';
+
+import useSetup from '../../../hooks/useAuth';
+import GuestLayout from '../../../layout/Guest';
+
+import styles from '../styles';
 
 const Verification = ({ handleSubmit, invalid, reset }) => {
     const { crud, requestOTP } = useSetup();
@@ -24,7 +28,6 @@ const Verification = ({ handleSubmit, invalid, reset }) => {
             navigate('OTP', { phoneNo: v.phoneNo })
             reset()
         }
-
     }
     return (
         <GuestLayout title={"Login"}>

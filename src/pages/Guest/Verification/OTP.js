@@ -1,14 +1,16 @@
-import { View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
-
-import GuestLayout from '../../../layout/Guest'
-import { colors, size } from '../../../helpers/variables'
-import { Text } from '../../../components/Typography'
-import { Button, Input } from '../../../components/Field';
 import { length, required } from 'redux-form-validators';
-import styles from '../styles';
+
+import { Text } from '../../../components/Typography';
+import { Button, Input } from '../../../components/Field';
+
 import useSetup from '../../../hooks/useAuth';
+import GuestLayout from '../../../layout/Guest';
+import { colors, size } from '../../../helpers/variables'
+
+import styles from '../styles';
 
 const OTP = ({ handleSubmit, route }) => {
     const { submitOTP } = useSetup();

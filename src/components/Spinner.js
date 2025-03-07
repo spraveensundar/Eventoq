@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, ActivityIndicator } from 'react-native';
 
-import styles from './styles';
 import { colors, size as sizes } from '../helpers/variables';
 
+import styles from './styles';
 
 const Spinner = ({ color = colors.black, style = {}, size = sizes.xxx_small }) => {
     return (

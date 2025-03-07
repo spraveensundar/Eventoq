@@ -3,16 +3,18 @@ import { Text, View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import get from "lodash"
 import { email, required } from 'redux-form-validators';
-import { navigate } from '../../../helpers/navigation';
-import styles from '../styles';
-import { colors, fontScale } from '../../../helpers/variables';
-import { Button, Input } from '../../../components/Field';
-import TextLink from '../../../components/TextLink';
-import { showToast } from '../../../helpers/notify';
-import GuestLayout from '../../../layout/Guest';
-import useSetup from '../../../hooks/useAuth';
-import Icon from '../../../components/Icon';
 
+import Icon from '../../../components/Icon';
+import TextLink from '../../../components/TextLink';
+import { Button, Input } from '../../../components/Field';
+
+import useSetup from '../../../hooks/useAuth';
+import GuestLayout from '../../../layout/Guest';
+import { showToast } from '../../../helpers/notify';
+import { colors } from '../../../helpers/variables';
+import { navigate } from '../../../helpers/navigation';
+
+import styles from '../styles';
 
 const Login = ({ handleSubmit, invalid, reset }) => {
     const { crud, submitLogin } = useSetup();
@@ -23,7 +25,7 @@ const Login = ({ handleSubmit, invalid, reset }) => {
     const submit = (v) => {
         submitLogin(v);
         if (crud.login.data.sessionToken) {
-            return navigate('Home')
+            return navigate('DashBoard')
         }
         showToast(message)
         setShowPassword(true)

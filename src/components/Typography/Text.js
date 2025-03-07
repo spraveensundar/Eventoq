@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text as NormalText } from 'react-native';
+
 import styles from './styles';
 
 export default function Text({ children, style = {}, tag = "p", margin = false, required = false, onPress = null, color = false, fontType = false, align = false }) {

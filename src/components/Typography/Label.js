@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text as NormalText, View } from 'react-native';
+
 import styles from './styles';
 
 export default function Label({ text = "", icon, style = {}, required = false }) {
@@ -14,7 +15,6 @@ export default function Label({ text = "", icon, style = {}, required = false })
                     <NormalText style={styles.required}> *</NormalText>
                 )
             }
-
         </View>
     )
 }
