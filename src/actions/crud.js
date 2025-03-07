@@ -28,3 +28,23 @@ export function resetData(attribute) {
         })
     }
 }
+
+export function requestOTP(attribute, data) {
+    return dispatch => {
+        dispatch({
+            type: "SETUP_SUBMIT",
+            payload: api.post("/auth/request-otp", data),
+            meta: { attribute }
+        })
+    }
+}
+
+export function submitOTP(attribute, data) {
+    return dispatch => {
+        dispatch({
+            type: "SETUP_SUBMIT",
+            payload: api.post("/auth/login-with-otp", data),
+            meta: { attribute }
+        })
+    }
+}

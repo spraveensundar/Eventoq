@@ -2,16 +2,21 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import DashBoard from './DashBoard';
-import Login from 'd:/React Native/ReactNative/src/pages/Guest/Login';
-import SingUp from 'd:/React Native/ReactNative/src/pages/Guest/SingUp';
+import Login from '../pages/Guest/Login';
+import SingUp from '../pages/Guest/SingUp';
+import Verification from '../pages/Guest/Verification';
+import OTP from '../pages/Guest/Verification/OTP';
+
 
 const useGuestRoutes = () => {
 	const Stack = createNativeStackNavigator();
 	return (
 		<>
 			<Stack.Screen name="Login" component={Login} />
-			<Stack.Screen name="DashBoard" component={DashBoard} />
 			<Stack.Screen name="SignUp" component={SingUp} />
+			<Stack.Screen name="OTP" component={OTP} />
+			<Stack.Screen name="Verification" component={Verification} />
+			<Stack.Screen name="DashBoard" component={DashBoard} />
 		</>
 	)
 }

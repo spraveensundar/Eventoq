@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Pressable, ActivityIndicator, Text } from 'react-native';
 
 import { getColors } from './Helper';
-import { colors } from 'd:/React Native/ReactNative/src/helpers/variables';
+import { colors } from '../../../helpers/variables';
 
 import styles from './styles';
 

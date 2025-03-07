@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { colors, fonts, normalize, size } from "../../helpers/variables";
+import { colors, fonts, normalize, size, fontScale } from "../../helpers/variables";
 
 const styles = StyleSheet.create({
     checkbox: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         paddingTop: size.xxx_small
     },
     orContent: {
-        paddingTop: size.xx_tiny,
+        paddingTop: size.small,
         flexDirection: "row",
         alignItems: "center"
     },
@@ -42,6 +42,10 @@ const styles = StyleSheet.create({
     bottomContainer: {
         paddingVertical: size.x_normal,
         paddingBottom: size.xxx_small
+    },
+    content: {
+        fontSize: fontScale(17),
+        fontWeight: "500"
     }
 })
 

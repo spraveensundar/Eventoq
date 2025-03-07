@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, Pressable, Text } from "react-native";
 import { get } from "lodash";
 
-import { colors, fontScale } from "d:/React Native/ReactNative/src/helpers/variables";
-
 import styles from "./styles";
+import { colors, fontScale } from "../../../helpers/variables";
 
 const Checkbox = ({ meta, input, label = "", backgroundColor = colors.white, style = {}, iconColor = colors.grey, disabled = false }) => {
     const initial = get(meta, 'initial', 0);

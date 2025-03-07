@@ -1,7 +1,7 @@
 import Toast from 'react-native-root-toast';
 
 export const showToast = (message, multiple = false) => {
-    if (message === false) {
+    if (message === "") {
         return "invalid";
     }
     if (isObject(message)) {

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { colors, fontScale, size } from "d:/React Native/ReactNative/src/helpers/variables";
+import { colors, fontScale, size } from "../../../helpers/variables";
 
 const styles = StyleSheet.create({
     buttonContainer: {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pressable, Text } from 'react-native';
-import { colors, fontScale } from 'd:/React Native/ReactNative/src/helpers/variables';
-
+import { colors, fontScale } from '../helpers/variables';
 
 const TextLink = ({ label, onPress, disabled = false, style = {} }) => {
     return (

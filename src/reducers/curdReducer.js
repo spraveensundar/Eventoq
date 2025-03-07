@@ -6,7 +6,7 @@ let defaultState = {
     data: {}
 }
 
-export default function curdReducer(state = {
+export default function crudReducer(state = {
     login: defaultState
 }, action) {
     switch (action.type) {

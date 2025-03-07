@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import get from "lodash"
-import { combine, email, required } from 'redux-form-validators';
+import { email, required } from 'redux-form-validators';
 import { navigate } from '../../../helpers/navigation';
 import styles from '../styles';
 import { colors, fontScale } from '../../../helpers/variables';
@@ -11,17 +11,18 @@ import TextLink from '../../../components/TextLink';
 import { showToast } from '../../../helpers/notify';
 import GuestLayout from '../../../layout/Guest';
 import useSetup from '../../../hooks/useAuth';
+import Icon from '../../../components/Icon';
 
 
 const Login = ({ handleSubmit, invalid, reset }) => {
-    const { curd, submitLogin } = useSetup();
-    const { fetching } = get(curd, "data", {});
+    const { crud, submitLogin } = useSetup();
+    const { fetching } = get(crud, "data", {});
     const [showPassword, setShowPassword] = useState(false);
-    const message = curd.login.serverError.message;
+    const message = crud.login.serverError.message;
 
     const submit = (v) => {
         submitLogin(v);
-        if (curd.login.data.sessionToken) {
+        if (crud.login.data.sessionToken) {
             return navigate('Home')
         }
         showToast(message)
@@ -35,7 +36,7 @@ const Login = ({ handleSubmit, invalid, reset }) => {
                 name='authinfo'
                 component={Input}
                 placeholder="Enter Your Email"
-                validate={combine(required({ message: 'Required field' }), email({ message: 'Please enter a valid email address' }))}
+                validate={[required(), email()]}
                 label="Email"
             />
             <Field
@@ -53,6 +54,10 @@ const Login = ({ handleSubmit, invalid, reset }) => {
                         type="checkbox"
                         component={Input}
                         label="Show Password"
+                        input={{
+                            value: showPassword ? 1 : 0,
+                            onChange: (value) => setShowPassword(value === 1),
+                        }}
                     />
                 </View>
                 <View>
@@ -65,7 +70,7 @@ const Login = ({ handleSubmit, invalid, reset }) => {
                     fetching={fetching}
                     onPress={handleSubmit(submit)}
                     disabled={invalid}
-                    buttonTextStyle={{ fontSize: fontScale(17), fontWeight: "500" }}
+                    buttonTextStyle={styles.content}
                 />
                 <View style={styles.orContent}>
                     <View style={styles.line}></View>
@@ -76,16 +81,18 @@ const Login = ({ handleSubmit, invalid, reset }) => {
                     type="secondary"
                     text="Login with OTP"
                     buttonTextStyle={styles.login}
+                    onPress={() => navigate("Verification")}
                 />
             </View>
             <View style={styles.bottomContainer}>
                 <Text style={styles.account}>Don’t have an account ?<Text onPress={() => navigate("DashBoard")} style={{ color: colors.light_Orange }}>  Sign Up</Text></Text>
             </View>
+            <Icon icon="home-outline" size={50} />
+
         </GuestLayout>
     )
 }
 
 export default reduxForm({
-    form: 'login',
-    initialValues: { authinfo: '', password: '' }
+    form: 'login'
 })(Login);

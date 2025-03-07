@@ -1,13 +1,16 @@
 import { StyleSheet } from "react-native";
 
-import { colors, fontScale, size } from "d:/React Native/ReactNative/src/helpers/variables";
+import { colors, fonts, fontScale, normalize, size } from "../../../helpers/variables";
 
 const styles = StyleSheet.create({
+
+    container: {
+    },
     inputContainer: {
-        width: 330,
-        paddingHorizontal: 16,
+        width: normalize(330),
+        paddingHorizontal: size.x_small,
         fontWeight: "400",
-        height: 50,
+        height: size.big,
         lineHeight: fontScale(21),
     },
     checkboxWrapper: {
@@ -25,6 +28,31 @@ const styles = StyleSheet.create({
     },
     labelWrapper: {
         paddingLeft: size.xx_tiny
+    },
+    pinCodeContainer: {
+        width: size.big,
+        height: size.big,
+        borderBottomWidth: 2,
+        borderRadius: size.five,
+        borderColor: colors.dawn
+    },
+    pinCodeText: {
+        fontSize: fontScale(24),
+        color: colors.orange,
+        fontFamily: fonts.poppinsSemiBold,
+        textAlign: 'center'
+    },
+    focusStick: {
+        width: '100%',
+        height: size.xxx_tiny,
+        backgroundColor: colors.black,
+        marginTop: size.tiny
+    },
+    activePinCodeContainer: {
+        borderBottomWidth: size.two
+    },
+    pinCode: {
+        paddingVertical: size.xxx_small
     }
 })
 

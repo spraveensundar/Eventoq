@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
 import { reducer as forms } from "redux-form";
-
-import curdReducer from "./curdReducer";
+import crudReducer from "./curdReducer";
 
 const appReducer = combineReducers({
     form: forms,
-    curd: curdReducer,
+    crud: crudReducer,
 })
 
 const rootReducer = (state, action) => {

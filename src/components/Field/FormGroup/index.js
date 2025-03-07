@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import { colors, fontScale, size } from 'd:/React Native/ReactNative/src/helpers/variables';
+import { colors, fontScale, size } from '../../../helpers/variables';
 
 import styles from './styles';
+
 
 export default function FormGroup(props) {
     const {

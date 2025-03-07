@@ -1,8 +1,5 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
-import useSetup from 'c:/Users/prave/OneDrive/Desktop/New folder (2)/AwesomeProject/src/hooks/useAuth';
-import { useNavigation } from '@react-navigation/native';
-import GuestLayout from 'c:/Users/prave/OneDrive/Desktop/New folder (2)/AwesomeProject/src/layouts/Guest';
 import { combine, confirmation, email, length, required } from 'redux-form-validators';
 import { colors, fontScale } from '../../helpers/variables';
 import { reduxForm, Field } from 'redux-form';
@@ -13,12 +10,14 @@ import { showToast } from '../../helpers/notify';
 import { Button, Input } from '../../components/Field';
 import styles from './styles';
 import { navigate } from '../../helpers/navigation';
+import GuestLayout from '../../layout/Guest';
+import useSetup from '../../hooks/useAuth';
 
 const SingUp = ({ invalid, handleSubmit, reset }) => {
-    const { curd, submitRegister } = useSetup();
-    const { fetching } = get(curd, "data", {});
+    const { crud, submitRegister } = useSetup();
+    const { fetching } = get(crud, "data", {});
     const [error, setError] = useState({});
-    const message = curd.login.serverError.message;
+    const message = crud.login.serverError.message;
 
     const submit = (v) => {
         submitRegister(v);
@@ -45,7 +44,7 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
             <Field
                 name='phoneNo'
                 component={Input}
-                placeholder="Enter Your PhoneNo"
+                placeholder="Enter Your Phone Number"
                 validate={required()}
                 label="Phone Number"
             />
@@ -94,6 +93,5 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
 }
 
 export default reduxForm({
-    form: 'register',
-    initialValues: { authinfo: '', password: '' }
+    form: 'register'
 })(SingUp);

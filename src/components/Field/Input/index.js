@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import Input from './Input';
 import Checkbox from './Checkbox';
+import { cleanInput } from '../../../helpers/input';
+import InputOTP from './OTP';
 
-import { cleanInput } from 'd:/React Native/ReactNative/src/helpers/input';
 
 export default function FieldInput(props) {
     const {
@@ -39,6 +40,12 @@ export default function FieldInput(props) {
     if (type === "checkbox") {
         return (
             <Checkbox {...otherProps} />
+        )
+    }
+
+    if (type === "pincode") {
+        return (
+            <InputOTP {...otherProps} />
         )
     }
 

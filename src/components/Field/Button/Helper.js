@@ -1,4 +1,4 @@
-import { colors } from "d:/React Native/ReactNative/src/helpers/variables";
+import { colors } from "../../../helpers/variables";
 
 export const getColors = (color, type) => {
     var textColor = (type === "secondary") ? colors.orange : colors.white;
