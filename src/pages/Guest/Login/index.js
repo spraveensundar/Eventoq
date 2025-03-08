@@ -71,7 +71,6 @@ const Login = ({ handleSubmit, invalid, reset }) => {
             <View style={styles.loginButton}>
                 <Button
                     text="Login"
-                    fetching={fetching}
                     onPress={handleSubmit(submit)}
                     disabled={invalid}
                     buttonTextStyle={styles.content}

@@ -17,7 +17,7 @@ const Panel = ({ icon, onPress, title }) => {
                 color={colors.black}
                 size={size.xxx_small}
             />
-            <View style={{ paddingRight: size.xx_small }}>
+            <View style={{ paddingLeft: size.xx_small }}>
                 <Text tag='h2'>{title}</Text>
             </View>
         </Pressable>
