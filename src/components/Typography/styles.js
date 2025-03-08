@@ -57,17 +57,17 @@ const styles = StyleSheet.create({
     p: {
         fontFamily: fonts.poppinsRegular,
         fontSize: fontScale(14),
-        color: colors.grey
+        color: colors.dark
     },
     small: {
         fontFamily: fonts.poppinsRegular,
         fontSize: fontScale(12)
     },
     label: {
-        fontSize: fontScale(14),
+        fontSize: fontScale(22),
         fontFamily: fonts.poppinsSemiBold,
         lineHeight: fontScale(22),
-        color: colors.grey
+        color: colors.black
     },
     link: {
         fontFamily: fonts.poppinsBold,

@@ -1,9 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import Icon from './Icon';
-import { Text } from './Typography';
-import { colors, size } from '../helpers/variables';
+import { colors, fontScale, size } from '../helpers/variables';
 
 import styles from './styles';
 
@@ -11,14 +10,14 @@ const BottomItem = ({ icon, isActive, text }) => {
     return (
         <View style={styles.bottomItem}>
             <View style={[styles.btmitemview]}>
-                <Icon
-                    icon={icon}
+                <Ionicons
+                    name={icon}
                     size={size.xxx_small}
-                    color={colors.black}
+                    color={isActive ? colors.orange : colors.dark}
                 />
             </View>
             <View style={styles.text}>
-                <Text tag='h1' style={{ fontWeight: isActive ? '600' : '500', color: isActive ? colors.black : colors.dark, textAlign: 'center' }}>{text}</Text>
+                <Text tag='h3' align="center" style={{ fontWeight: isActive ? '600' : '500', color: isActive ? colors.orange : colors.dark, fontSize: fontScale(14) }}>{text}</Text>
             </View>
         </View>
     )

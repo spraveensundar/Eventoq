@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
-import get from "lodash"
 import { email, required } from 'redux-form-validators';
 
-import Icon from '../../../components/Icon';
 import TextLink from '../../../components/TextLink';
 import { Button, Input } from '../../../components/Field';
 
@@ -18,16 +16,20 @@ import styles from '../styles';
 
 const Login = ({ handleSubmit, invalid, reset }) => {
     const { crud, submitLogin } = useSetup();
-    const { fetching } = get(crud, "data", {});
+    const message = crud?.login?.serverError?.message;
     const [showPassword, setShowPassword] = useState(false);
-    const message = crud.login.serverError.message;
+
+    useEffect(() => {
+        if (message) {
+            showToast(message);
+        }
+    }, [crud.login.serverError]);
 
     const submit = (v) => {
         submitLogin(v);
         if (crud.login.data.sessionToken) {
             return navigate('DashBoard')
         }
-        showToast(message)
         setShowPassword(true)
         reset();
     }
@@ -87,10 +89,8 @@ const Login = ({ handleSubmit, invalid, reset }) => {
                 />
             </View>
             <View style={styles.bottomContainer}>
-                <Text style={styles.account}>Don’t have an account ?<Text onPress={() => navigate("DashBoard")} style={{ color: colors.light_Orange }}>  Sign Up</Text></Text>
+                <Text style={styles.account}>Don’t have an account ?<Text onPress={() => navigate("SignUp")} style={{ color: colors.light_Orange }}>  Sign Up</Text></Text>
             </View>
-            <Icon icon="home-outline" size={50} />
-
         </GuestLayout>
     )
 }

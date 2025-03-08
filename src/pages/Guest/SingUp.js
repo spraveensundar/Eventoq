@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
-import { combine, confirmation, email, length, required } from 'redux-form-validators';
+import { confirmation, email, length, required } from 'redux-form-validators';
 import { reduxForm, Field } from 'redux-form';
 import get from "lodash";
 
 import { Button, Input } from '../../components/Field';
+import WebviewModal from '../../components/DialogBox/Web';
 
 import { showToast } from '../../helpers/notify';
 import { navigate } from '../../helpers/navigation';
@@ -13,6 +14,7 @@ import { getPasswordValidationRegex, passwordValidator } from '../../helpers/inp
 
 import useSetup from '../../hooks/useAuth';
 import GuestLayout from '../../layout/Guest';
+import { EVENTOQ_PRIVACY, EVENTOQ_TERMS } from '../../config';
 
 import styles from './styles';
 
@@ -21,12 +23,20 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
     const { fetching } = get(crud, "data", {});
     const [error, setError] = useState({});
     const message = crud.login.serverError.message;
+    const [popup, setPopup] = useState("");
+    const [webUrl, setWebUrl] = useState("");
 
     const submit = (v) => {
         submitRegister(v);
         showToast(message)
         reset();
     }
+
+    const handleLinkPress = (type) => {
+        setPopup(type);
+        const url = type === 'terms' ? EVENTOQ_TERMS : EVENTOQ_PRIVACY;
+        setWebUrl(url);
+    };
 
     return (
         <GuestLayout title={"Sign Up"}>
@@ -41,7 +51,7 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
                 name='email'
                 component={Input}
                 placeholder="Enter Your Email"
-                validate={combine(required({ message: 'Required field' }), email({ message: 'Please enter a valid email address' }))}
+                validate={[required(), email()]}
                 label="Email"
             />
             <Field
@@ -76,7 +86,7 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
                         component={Input}
                         label="I have accepted the"
                     />
-                    <Text style={{ color: colors.orange }}> terms & conditions</Text>
+                    <Text onPress={() => handleLinkPress("terms")} style={{ color: colors.orange }}> terms & <Text onPress={() => handleLinkPress("privacy")}>conditions</Text></Text>
                 </View>
             </View>
             <View style={styles.loginButton}>
@@ -91,6 +101,13 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
             <View style={styles.bottomContainer}>
                 <Text style={styles.account}>Already have an account ?<Text onPress={() => navigate("Login")} style={{ color: colors.light_Orange }}>  Login</Text></Text>
             </View>
+            {popup && (
+                <WebviewModal
+                    title={popup === "terms" ? "Terms & Conditions" : "Privacy Policy"}
+                    url={webUrl}
+                    onPress={() => setPopup(false)}
+                />
+            )}
         </GuestLayout>
     )
 }

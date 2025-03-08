@@ -18,10 +18,11 @@ import styles from '../styles';
 
 const Verification = ({ handleSubmit, invalid, reset }) => {
     const { crud, requestOTP } = useSetup();
-    const message = crud.otp.serverError.message;
+    const message = crud?.otp?.serverError?.message;
+
     const submit = (v) => {
         requestOTP(v);
-        if (crud.otp.serverError.message) {
+        if (message) {
             showToast(message)
             reset()
         } else {

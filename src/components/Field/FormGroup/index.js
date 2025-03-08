@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-import { colors, fontScale, size } from '../../../helpers/variables';
+import { colors } from '../../../helpers/variables';
 
 import styles from './styles';
 
@@ -17,20 +17,18 @@ export default function FormGroup(props) {
     const isShow = touched && error && !disabled;
 
     return (
-        <>
-            <View style={{ paddingTop: size.xx_tiny }}>
-                <Text style={{ fontSize: fontScale(17), color: colors.black, fontWeight: "500", marginBottom: size.xx_tiny }}>{label}</Text>
-                <View style={{ borderColor: colors.dawn, borderWidth: 1, borderRadius: 8 }}>
-                    {children}
-                </View>
-                {
-                    isShow && (
-                        <View style={styles.errorText}>
-                            <Text style={{ color: colors.red }}>{error}</Text>
-                        </View>
-                    )
-                }
+        <View style={styles.formContainer}>
+            <Text style={styles.label}>{label}</Text>
+            <View style={styles.form}>
+                {children}
             </View>
-        </>
+            {
+                isShow && (
+                    <View style={styles.errorText}>
+                        <Text style={{ color: colors.red }}>{error}</Text>
+                    </View>
+                )
+            }
+        </View>
     )
 }

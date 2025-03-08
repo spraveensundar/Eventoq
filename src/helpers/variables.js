@@ -68,5 +68,6 @@ export const colors = {
     orange: "#FF6666",
     dark: "#848484",
     light_Orange: "#FF6A6A",
-    dawn: "#A1A1A1"
+    dawn: "#A1A1A1",
+    smoke: "rgba(189, 189, 189, 1)"
 }

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { View, Pressable, Text } from "react-native";
 import { get } from "lodash";
 
-import { colors, fontScale } from "../../../helpers/variables";
+import Icon from "../../Icon";
+import { colors, size } from "../../../helpers/variables";
 
 import styles from "./styles";
 
-const Checkbox = ({ meta, input, label = "", backgroundColor = colors.white, style = {}, iconColor = colors.grey, disabled = false }) => {
+const Checkbox = ({ meta, input, label = "", backgroundColor = colors.orange, style = {}, disabled = false }) => {
     const initial = get(meta, 'initial', 0);
     const [checked, setChecked] = useState(initial);
 
@@ -38,12 +39,16 @@ const Checkbox = ({ meta, input, label = "", backgroundColor = colors.white, sty
                 <View style={[styles.checkboxSubContainer, { backgroundColor: checked === 0 ? 'transparent' : backgroundColor, ...style }]}>
                     {
                         checked === 1 && (
-                            <Text style={{ color: colors.white }}>✔️</Text>
+                            <Icon
+                                icon="checkmark-sharp"
+                                color={colors.white}
+                                size={size.xx_small}
+                            />
                         )
                     }
                 </View>
                 <View style={styles.labelWrapper}>
-                    <Text style={{ color: colors.dark, fontSize: fontScale(14), fontWeight: "500" }}>{label}</Text>
+                    <Text style={styles.label}>{label}</Text>
                 </View>
             </View>
         </Pressable>

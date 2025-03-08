@@ -50,6 +50,11 @@ const styles = StyleSheet.create({
     },
     pinCode: {
         paddingVertical: size.xxx_small
+    },
+    label: {
+        color: colors.dark,
+        fontSize: fontScale(14),
+        fontWeight: "500"
     }
 })
 

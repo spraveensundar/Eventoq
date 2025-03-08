@@ -41,4 +41,4 @@ const InputOTP = (props) => {
     )
 }
 
-export default InputOTP
+export default InputOTP;
