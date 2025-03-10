@@ -3,11 +3,16 @@ import { get } from "lodash";
 let defaultState = {
     fetching: false,
     serverError: [],
-    data: {}
+    data: {},
+    status: null
 }
 
 export default function crudReducer(state = {
-    login: defaultState
+    login: defaultState,
+    register: defaultState,
+    otp: defaultState,
+    verification: defaultState,
+    logout: defaultState
 }, action) {
     switch (action.type) {
         case "SETUP_SUBMIT_PENDING": {
@@ -35,12 +40,14 @@ export default function crudReducer(state = {
         case "SETUP_SUBMIT_FULFILLED": {
             const { attribute } = action.meta;
             const data = get(action, "payload.data", {});
+            const status = get(action, "payload.status", null);
             return {
                 ...state,
                 [attribute]: {
                     ...defaultState,
                     fetching: false,
-                    data: get(data, "data", {})
+                    data: data,
+                    status
                 }
             }
         }

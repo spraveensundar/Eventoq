@@ -33,8 +33,12 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     content: {
-        paddingHorizontal: size.xx_medium
-    }
+        paddingRight: size.regular,
+        paddingLeft: size.regular
+    },
+    scrollContent: {
+        paddingBottom: size.xx_medium
+    },
 })
 
 export default styles;

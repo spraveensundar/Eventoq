@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },
     copyRight: {
         paddingTop: size.xxx_small,
-        paddingBottom: size.xx_big,
+        paddingBottom: size.big,
         alignItems: "center",
         flexDirection: "row",
         justifyContent: "center"

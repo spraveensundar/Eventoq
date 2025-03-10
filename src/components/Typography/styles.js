@@ -77,6 +77,12 @@ const styles = StyleSheet.create({
         paddingTop: size.xx_tiny,
         lineHeight: fontScale(22)
     },
+    title: {
+        fontSize: fontScale(22),
+        fontFamily: fonts.poppinsBold,
+        color: colors.black,
+        fontWeight: "700"
+    },
     bold: {
         fontFamily: fonts.poppinsBold
     },
@@ -94,6 +100,12 @@ const styles = StyleSheet.create({
     },
     left: {
         textAlign: 'left'
+    },
+    big: {
+        fontSize: fontScale(45),
+        fontFamily: fonts.poppinsBold,
+        color: colors.black,
+        fontWeight: "700"
     },
     right: {
         textAlign: 'right'

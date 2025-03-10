@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-
+import get from "lodash/get";
 import { reduxForm, Field } from 'redux-form';
 import { required } from 'redux-form-validators';
 
@@ -17,19 +17,30 @@ import GuestLayout from '../../../layout/Guest';
 import styles from '../styles';
 
 const Verification = ({ handleSubmit, invalid, reset }) => {
-    const { crud, requestOTP } = useSetup();
-    const message = crud?.otp?.serverError?.message;
+    const { crud, requestOTP, resetData } = useSetup();
+    const { data, fetching, serverError } = get(crud, 'otp', {});
+    const [phone, phoneNumber] = useState(null);
 
     const submit = (v) => {
         requestOTP(v);
-        if (message) {
-            showToast(message)
-            reset()
-        } else {
-            navigate('OTP', { phoneNo: v.phoneNo })
-            reset()
-        }
+        phoneNumber(v.phoneNo)
+        reset();
     }
+
+    useEffect(() => {
+        return () => {
+            resetData('otp');
+        }
+    }, [])
+
+    useEffect(() => {
+        if (serverError?.message) {
+            showToast(serverError.message);
+        } else if (data?.success === true) {
+            navigate('OTP', { phoneNo: phone })
+        }
+    }, [serverError, data]);
+
     return (
         <GuestLayout title={"Login"}>
             <View style={{ paddingBottom: size.xxx_small }}>
@@ -39,14 +50,16 @@ const Verification = ({ handleSubmit, invalid, reset }) => {
                 name='phoneNo'
                 component={Input}
                 label="Phone"
+                inputMode="numeric"
                 validate={required()}
                 placeholder="Enter Your Phone Number"
             />
             <View style={styles.loginButton}>
                 <Button
                     text="Get OTP"
-                    onPress={handleSubmit(submit)}
                     disabled={invalid}
+                    fetching={fetching}
+                    onPress={handleSubmit(submit)}
                     buttonTextStyle={{ fontSize: fontScale(17), fontWeight: "500" }}
                 />
                 <View style={styles.orContent}>
@@ -69,5 +82,6 @@ const Verification = ({ handleSubmit, invalid, reset }) => {
 }
 
 export default reduxForm({
-    form: 'otp'
+    form: 'otp',
+    enableReinitialize: true
 })(Verification);

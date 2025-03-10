@@ -48,3 +48,13 @@ export function submitOTP(attribute, data) {
         })
     }
 }
+
+export function userLogout(attribute, data) {
+    return dispatch => {
+        dispatch({
+            type: "USER_LOGOUT",
+            payload: api.post("/auth/logout", data),
+            meta: { attribute }
+        })
+    }
+}

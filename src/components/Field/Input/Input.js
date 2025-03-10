@@ -13,6 +13,7 @@ const Input = (props) => {
         disabled = false,
         meta,
         label,
+        inputMode,
         secureTextEntry
     } = props;
 
@@ -51,6 +52,7 @@ const Input = (props) => {
                 placeholderTextColor={colors.dawn}
                 secureTextEntry={secureTextEntry}
                 underlineColorAndroid="transparent"
+                keyboardType={inputMode}
             />
         </FormGroup>
     )

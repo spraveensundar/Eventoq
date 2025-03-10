@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Pressable, ActivityIndicator, Text } from 'react-native';
+import { View, Pressable, Text } from 'react-native';
 
+import Spinner from '../../Spinner';
 import { getColors } from './Helper';
-import { colors } from '../../../helpers/variables';
+import { colors, size } from '../../../helpers/variables';
 
 import styles from './styles';
 
@@ -37,9 +38,7 @@ const Button = React.forwardRef((props, ref) => {
                     }
                     {
                         fetching === true && (
-                            <View style={styles.buttonSubContainer}>
-                                <ActivityIndicator color={textColor} />
-                            </View>
+                            <Spinner color={textColor} size={size.xxxx_small} />
                         )
                     }
                 </View>
@@ -57,15 +56,12 @@ const Button = React.forwardRef((props, ref) => {
             ]}>
                 {
                     fetching === false && (
-                        <>
-                            <Text style={[{ color: textColor }, buttonTextStyle]}>{text}</Text>
-                        </>
-
+                        <Text style={[{ color: textColor }, buttonTextStyle]}>{text}</Text>
                     )
                 }
                 {
                     fetching === true && (
-                        <ActivityIndicator color={textColor} />
+                        <Spinner color={colors.white} size={size.xxxx_small} />
                     )
                 }
             </View>

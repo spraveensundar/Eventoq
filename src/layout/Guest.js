@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Image, StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -13,13 +13,6 @@ import styles from './styles';
 
 const GuestLayout = ({ children, title }) => {
     const insets = useSafeAreaInsets();
-
-    useEffect(() => {
-        StatusBar.setBarStyle("dark-content");
-        StatusBar.setBackgroundColor(colors.orange);
-        StatusBar.setTranslucent(true);
-    }, []);
-
     return (
         <KeyboardAwareScrollView
             contentContainerStyle={[styles.con, { paddingTop: insets.top }]}

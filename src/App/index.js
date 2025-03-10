@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import get from "lodash";
 
 import useGuestRoutes from './GuestRoutes';
+import { getStorageItem } from '../helpers/storage';
 import { navigationRef } from '../helpers/navigation';
 import BackEventHandler from '../layout/BackEventHandler';
 
@@ -23,6 +24,9 @@ const App = () => {
 		routeNameRef.current = currentRouteName;
 	}
 
+	const token = getStorageItem("userId");
+	const initialRoute = token ? 'DashBoard' : 'Login';
+
 	return (
 		<NavigationContainer
 			ref={navigationRef}
@@ -32,7 +36,7 @@ const App = () => {
 			onStateChange={logScreenView}
 		>
 			<BackEventHandler navigationRef={navigationRef} />
-			<Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+			<Stack.Navigator initialRouteName={initialRoute} screenOptions={{ headerShown: false }}>
 				{useGuestRoutes()}
 			</Stack.Navigator>
 		</NavigationContainer>

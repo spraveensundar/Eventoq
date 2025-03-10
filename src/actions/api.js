@@ -12,7 +12,7 @@ var api = axios.create({
 })
 
 api.interceptors.response.use(
-    response => console.log(response),
+    response => response,
     error => {
         if (error.response && error.response.status === 401) {
             console.log("Unauthorized! Redirecting to login...");

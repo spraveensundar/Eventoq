@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import { confirmation, email, length, required } from 'redux-form-validators';
+import { confirmation, email, required } from 'redux-form-validators';
 import { reduxForm, Field } from 'redux-form';
-import get from "lodash";
+import get from "lodash/get";
 
 import { Button, Input } from '../../components/Field';
 import WebviewModal from '../../components/DialogBox/Web';
@@ -10,7 +10,7 @@ import WebviewModal from '../../components/DialogBox/Web';
 import { showToast } from '../../helpers/notify';
 import { navigate } from '../../helpers/navigation';
 import { colors, fontScale } from '../../helpers/variables';
-import { getPasswordValidationRegex, passwordValidator } from '../../helpers/input';
+import { getPasswordValidationRegex, phoneNumber } from '../../helpers/input';
 
 import useSetup from '../../hooks/useAuth';
 import GuestLayout from '../../layout/Guest';
@@ -19,18 +19,31 @@ import { EVENTOQ_PRIVACY, EVENTOQ_TERMS } from '../../config';
 import styles from './styles';
 
 const SingUp = ({ invalid, handleSubmit, reset }) => {
-    const { crud, submitRegister } = useSetup();
-    const { fetching } = get(crud, "data", {});
-    const [error, setError] = useState({});
-    const message = crud.login.serverError.message;
+    const { crud, submitRegister, resetData } = useSetup();
+    const { data, fetching, serverError } = get(crud, 'register', {});
     const [popup, setPopup] = useState("");
     const [webUrl, setWebUrl] = useState("");
 
+    console.log(get(crud, 'register', {}))
+
     const submit = (v) => {
         submitRegister(v);
-        showToast(message)
         reset();
     }
+
+    useEffect(() => {
+        return () => {
+            resetData('register');
+        }
+    }, [])
+
+    useEffect(() => {
+        if (serverError?.message) {
+            showToast(serverError.message);
+        } else if (data?.success && !fetching) {
+            navigate('DashBoard');
+        }
+    }, [serverError, data]);
 
     const handleLinkPress = (type) => {
         setPopup(type);
@@ -57,8 +70,9 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
             <Field
                 name='phoneNo'
                 component={Input}
+                inputMode="numeric"
                 placeholder="Enter Your Phone Number"
-                validate={required()}
+                validate={[required(), phoneNumber]}
                 label="Phone Number"
             />
             <Field
@@ -66,9 +80,8 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
                 component={Input}
                 label="Password"
                 placeholder="Enter Your Passwrod"
-                validate={[required(), length({ minimum: 8 }), getPasswordValidationRegex()]}
+                validate={[required(), getPasswordValidationRegex]}
                 secureTextEntry={true}
-                onChange={(value) => setError(passwordValidator(value))}
             />
             <Field
                 name="newpassword"

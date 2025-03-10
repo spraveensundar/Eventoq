@@ -1,9 +1,25 @@
 import emojiRegex from 'emoji-regex';
-import { format } from "redux-form-validators";
 
-export const getPasswordValidationRegex = () => {
-    return format({ with: /(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])/ });
-}
+export const getPasswordValidationRegex = (value) => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    if (!value) {
+        return 'Password is required';
+    } else if (!passwordRegex.test(value)) {
+        return 'Password must have ats';
+    }
+
+    return undefined;
+};
+
+export const phoneNumber = (value) => {
+    const phoneRegex = /^\+91[6-9]\d{9}$/;
+    if (!value) {
+        return 'Phone number is required';
+    } else if (!phoneRegex.test(value)) {
+        return 'Invalid phone number';
+    }
+    return undefined;
+};
 
 export function cleanInput(value, removeEmoji = true) {
     if (!value) {

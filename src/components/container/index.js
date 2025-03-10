@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ScrollView, StatusBar, View } from 'react-native';
 
 import Header from './Header';
@@ -16,14 +16,13 @@ const Container = (props) => {
         header = true,
     } = props;
 
-    useEffect(() => {
-        StatusBar.setBarStyle("dark-content");
-        StatusBar.setBackgroundColor(colors.white);
-        StatusBar.setTranslucent(true);
-    }, []);
-
     return (
         <View style={[styles.container, { backgroundColor }]}>
+            <StatusBar
+                barStyle="dark-content"
+                backgroundColor={colors.white}
+                translucent={true}
+            />
             {
                 header !== false && (
                     <Header

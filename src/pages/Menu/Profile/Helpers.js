@@ -1,30 +1,4 @@
-import { Alert } from "react-native";
-
-import { makePhoneCall, navigate } from "../../../helpers/navigation";
-
-const logoutHandle = () => {
-    Alert.alert(
-        'Eventoq',
-        'Are you sure you want to logout?',
-        [
-            {
-                text: 'Yes',
-                onPress: () => {
-                    // logout();
-                    // navigation.reset({
-                    //     index: 0,
-                    //     routes: [
-                    //         { name: 'GetStarted' }
-                    //     ]
-                    // });
-                    // dispatch(clearSession());
-                },
-            },
-            { text: 'No' },
-        ],
-        { cancelable: false }
-    );
-}
+import { makePhoneCall, navigate, reset } from "../../../helpers/navigation";
 
 const PanelItem = [
     {
@@ -61,11 +35,6 @@ const PanelItem = [
         icon: "notifications-outline",
         name: "Notifications",
         onPress: () => navigate("Notification")
-    },
-    {
-        icon: "power-outline",
-        name: "Logout",
-        onPress: logoutHandle
     }
 ]
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
+import get from "lodash/get";
 import { reduxForm, Field } from 'redux-form';
 import { email, required } from 'redux-form-validators';
 
@@ -8,31 +9,41 @@ import { Button, Input } from '../../../components/Field';
 
 import useSetup from '../../../hooks/useAuth';
 import GuestLayout from '../../../layout/Guest';
-import { showToast } from '../../../helpers/notify';
 import { colors } from '../../../helpers/variables';
+import { showToast } from '../../../helpers/notify';
 import { navigate } from '../../../helpers/navigation';
+import { setStorageItem } from '../../../helpers/storage';
 
 import styles from '../styles';
 
-const Login = ({ handleSubmit, invalid, reset }) => {
-    const { crud, submitLogin } = useSetup();
-    const message = crud?.login?.serverError?.message;
-    const [showPassword, setShowPassword] = useState(false);
 
-    useEffect(() => {
-        if (message) {
-            showToast(message);
-        }
-    }, [crud.login.serverError]);
+const Login = ({ handleSubmit, invalid, reset }) => {
+    const { crud, submitLogin, resetData } = useSetup();
+    const [showPassword, setShowPassword] = useState(false);
+    const { data, fetching, serverError } = get(crud, 'login', {});
 
     const submit = (v) => {
         submitLogin(v);
-        if (crud.login.data.sessionToken) {
-            return navigate('DashBoard')
-        }
-        setShowPassword(true)
         reset();
     }
+
+    useEffect(() => {
+        return () => {
+            resetData('login');
+        }
+    }, [])
+
+    useEffect(() => {
+        if (serverError?.message) {
+            showToast(serverError.message);
+        } else if (data && !fetching) {
+            const userName = get(data, 'data.user.name', false);
+            const userId = get(data, "data.user._id", false)
+            setStorageItem("userName", userName)
+            setStorageItem("userId", userId)
+            navigate('DashBoard');
+        }
+    }, [serverError, data]);
 
     return (
         <GuestLayout title={"Login"}>
@@ -52,27 +63,24 @@ const Login = ({ handleSubmit, invalid, reset }) => {
                 secureTextEntry={!showPassword}
             />
             <View style={styles.checkbox}>
-                <View>
-                    <Field
-                        name="remmbers"
-                        type="checkbox"
-                        component={Input}
-                        label="Show Password"
-                        input={{
-                            value: showPassword ? 1 : 0,
-                            onChange: (value) => setShowPassword(value === 1),
-                        }}
-                    />
-                </View>
-                <View>
-                    <TextLink label={"Forgot Password ?"} />
-                </View>
+                <Field
+                    name="remmbers"
+                    type="checkbox"
+                    component={Input}
+                    label="Show Password"
+                    input={{
+                        value: showPassword ? 1 : 0,
+                        onChange: (value) => setShowPassword(value === 1),
+                    }}
+                />
+                <TextLink label={"Forgot Password ?"} />
             </View>
             <View style={styles.loginButton}>
                 <Button
                     text="Login"
                     onPress={handleSubmit(submit)}
                     disabled={invalid}
+                    fetching={fetching}
                     buttonTextStyle={styles.content}
                 />
                 <View style={styles.orContent}>
@@ -95,5 +103,6 @@ const Login = ({ handleSubmit, invalid, reset }) => {
 }
 
 export default reduxForm({
-    form: 'login'
+    form: 'login',
+    enableReinitialize: true,
 })(Login);

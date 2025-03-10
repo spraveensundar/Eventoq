@@ -43,6 +43,7 @@ const Checkbox = ({ meta, input, label = "", backgroundColor = colors.orange, st
                                 icon="checkmark-sharp"
                                 color={colors.white}
                                 size={size.xx_small}
+                                onPress={setValue}
                             />
                         )
                     }
