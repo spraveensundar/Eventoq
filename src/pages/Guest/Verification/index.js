@@ -9,12 +9,13 @@ import { Button, Input } from '../../../components/Field';
 
 import { showToast } from '../../../helpers/notify';
 import { goBack, navigate } from '../../../helpers/navigation';
-import { colors, fontScale, size } from '../../../helpers/variables';
+import { colors, fonts, fontScale, size } from '../../../helpers/variables';
 
 import useSetup from '../../../hooks/useAuth';
 import GuestLayout from '../../../layout/Guest';
 
 import styles from '../styles';
+import { phoneNumberValidator } from '../../../helpers/input';
 
 const Verification = ({ handleSubmit, invalid, reset }) => {
     const { crud, requestOTP, resetData } = useSetup();
@@ -44,14 +45,15 @@ const Verification = ({ handleSubmit, invalid, reset }) => {
     return (
         <GuestLayout title={"Login"}>
             <View style={{ paddingBottom: size.xxx_small }}>
-                <Text tag='h3' align={"center"}>We will send you an <Text tag='h3' getFontType="bold">One Time Password</Text> on this phone number</Text>
+                <Text tag='h3' align={"center"}>We will send you an <Text tag='h3' getFontType="bold" style={{ fontWeight: "700" }}>One Time Password</Text> on this phone number</Text>
             </View>
             <Field
                 name='phoneNo'
                 component={Input}
                 label="Phone"
+                type="phone"
                 inputMode="numeric"
-                validate={required()}
+                validate={[required(), phoneNumberValidator]}
                 placeholder="Enter Your Phone Number"
             />
             <View style={styles.loginButton}>
@@ -75,7 +77,7 @@ const Verification = ({ handleSubmit, invalid, reset }) => {
                 />
             </View>
             <View style={styles.bottomContainer}>
-                <Text style={styles.account}>Don’t have an account ?<Text onPress={() => navigate("SignUp")} style={{ color: colors.light_Orange }}>  Sign Up</Text></Text>
+                <Text style={styles.account}>Don’t have an account ?<Text onPress={() => navigate("SignUp")} style={{ color: colors.light_Orange, fontFamily: fonts.poppinsMedium }}>  Sign Up</Text></Text>
             </View>
         </GuestLayout>
     )

@@ -85,7 +85,7 @@ const Login = ({ handleSubmit, invalid, reset }) => {
                 />
                 <View style={styles.orContent}>
                     <View style={styles.line}></View>
-                    <Text>  Or  </Text>
+                    <Text style={{ color: colors.dark }}>  Or  </Text>
                     <View style={styles.line}></View>
                 </View>
                 <Button

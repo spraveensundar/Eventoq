@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { colors, fontScale, size } from "../../../helpers/variables";
+import { colors, fonts, fontScale, size } from "../../../helpers/variables";
 
 const styles = StyleSheet.create({
     errorText: {
@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     label: {
         fontSize: fontScale(17),
         color: colors.black,
-        fontWeight: "500",
-        marginBottom: size.xx_tiny
+        marginBottom: size.xx_tiny,
+        fontFamily: fonts.poppinsMedium
     },
     form: {
         borderColor: colors.dawn,

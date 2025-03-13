@@ -11,8 +11,8 @@ export const getPasswordValidationRegex = (value) => {
     return undefined;
 };
 
-export const phoneNumber = (value) => {
-    const phoneRegex = /^\+91[6-9]\d{9}$/;
+export const phoneNumberValidator = (value) => {
+    const phoneRegex = /^\[6-9]\d{9}$/;
     if (!value) {
         return 'Phone number is required';
     } else if (!phoneRegex.test(value)) {

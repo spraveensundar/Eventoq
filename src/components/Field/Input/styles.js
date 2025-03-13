@@ -54,7 +54,44 @@ const styles = StyleSheet.create({
     label: {
         color: colors.dark,
         fontSize: fontScale(14),
-        fontWeight: "500"
+        fontFamily: fonts.poppinsMedium
+    },
+    errorText: {
+        marginTop: size.two,
+        alignItems: "flex-end",
+        marginBottom: -10
+    },
+    labelText: {
+        fontSize: fontScale(17),
+        color: colors.black,
+        marginBottom: size.xx_tiny,
+        fontFamily: fonts.poppinsMedium
+    },
+    form: {
+        width: normalize(330),
+        borderColor: colors.dawn,
+        borderWidth: 1,
+        borderRadius: 8,
+        height: size.big
+    },
+    formContainer: {
+        paddingTop: size.xx_tiny
+    },
+    textContainer: {
+        height: size.big,
+        paddingVertical: 0,
+        backgroundColor: "transparent"
+    },
+    phoneLabel: {
+        padding: 0,
+        color: colors.black,
+        fontSize: fontScale(14),
+        fontFamily: fonts.poppinsMedium
+    },
+    flag: {
+        width: size.medium,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 

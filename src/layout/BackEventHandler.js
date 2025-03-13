@@ -7,7 +7,7 @@ const BackEventHandler = ({ navigationRef }) => {
     useEffect(() => {
         const onBackPress = () => {
             const currentRoute = get(navigationRef.current.getCurrentRoute(), "name", '');
-            if (["Home", "DashBoard", "OTP", "Login"].includes(currentRoute)) {
+            if (["Home", "DashBoard"].includes(currentRoute)) {
                 return true;
             }
             return false;

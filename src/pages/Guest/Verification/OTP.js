@@ -10,20 +10,24 @@ import { Button, Input } from '../../../components/Field';
 import useSetup from '../../../hooks/useAuth';
 import GuestLayout from '../../../layout/Guest';
 import { showToast } from '../../../helpers/notify'
-import { colors, size } from '../../../helpers/variables';
+import { colors, fonts, size } from '../../../helpers/variables';
 import { goBack, navigate } from '../../../helpers/navigation';
 
 import styles from '../styles';
 
-const OTP = ({ handleSubmit, route }) => {
-    const { crud, submitOTP, resetData } = useSetup();
+const OTP = ({ handleSubmit, route, reset }) => {
+    const { crud, submitOTP, resetData, requestOTP } = useSetup();
     const { data, fetching, serverError } = get(crud, 'verification', {});
+    const { fetching: otpFetching = false } = get(crud, 'otp', {});
     const phoneNo = route.params?.phoneNo || "Unknown";
-
-    console.log(get(crud, 'verification', {}))
 
     const submit = (v) => {
         submitOTP({ ...v, phoneNo })
+    }
+
+    const resendOTP = (v) => {
+        requestOTP(v);
+        reset();
     }
 
     useEffect(() => {
@@ -43,7 +47,7 @@ const OTP = ({ handleSubmit, route }) => {
     return (
         <GuestLayout title={"OTP Verification"}>
             <View style={{ paddingBottom: size.xxx_small }}>
-                <Text tag='h3' align={"center"}>We have sent you an OTP to <Text tag='h3' getFontType="bold">{phoneNo}</Text></Text>
+                <Text tag='h3' align={"center"}>We have sent you an OTP to <Text tag='h3' getFontType="bold" style={{ fontWeight: "700" }}>{phoneNo}</Text></Text>
             </View>
             <Field
                 name="otp"
@@ -58,7 +62,7 @@ const OTP = ({ handleSubmit, route }) => {
                 onPress={handleSubmit(submit)}
             />
             <View style={styles.bottomContainer}>
-                <Text style={styles.account}>Didn’t Receive the OTP ? <Text onPress={() => goBack()} style={{ color: colors.light_Orange }}>  Resend OTP</Text></Text>
+                <Text style={styles.account}>Didn’t Receive the OTP ? <Text onPress={() => resendOTP({ phoneNo: phoneNo })} style={{ color: colors.light_Orange, fontFamily: fonts.poppinsMedium, opacity: otpFetching ? 0.4 : 1 }}>  Resend OTP</Text></Text>
             </View>
         </GuestLayout>
     )

@@ -8,9 +8,9 @@ import { Button, Input } from '../../components/Field';
 import WebviewModal from '../../components/DialogBox/Web';
 
 import { showToast } from '../../helpers/notify';
-import { navigate } from '../../helpers/navigation';
+import { goBack, navigate } from '../../helpers/navigation';
 import { colors, fontScale } from '../../helpers/variables';
-import { getPasswordValidationRegex, phoneNumber } from '../../helpers/input';
+import { getPasswordValidationRegex, phoneNumber, phoneNumberValidator } from '../../helpers/input';
 
 import useSetup from '../../hooks/useAuth';
 import GuestLayout from '../../layout/Guest';
@@ -69,11 +69,12 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
             />
             <Field
                 name='phoneNo'
+                type="phone"
                 component={Input}
                 inputMode="numeric"
                 placeholder="Enter Your Phone Number"
-                validate={[required(), phoneNumber]}
-                label="Phone Number"
+                validate={[required(), phoneNumberValidator]}
+                label="Phone"
             />
             <Field
                 name="password"
@@ -112,7 +113,7 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
                 />
             </View>
             <View style={styles.bottomContainer}>
-                <Text style={styles.account}>Already have an account ?<Text onPress={() => navigate("Login")} style={{ color: colors.light_Orange }}>  Login</Text></Text>
+                <Text style={styles.account}>Already have an account ?<Text onPress={() => goBack()} style={{ color: colors.light_Orange }}>  Login</Text></Text>
             </View>
             {popup && (
                 <WebviewModal

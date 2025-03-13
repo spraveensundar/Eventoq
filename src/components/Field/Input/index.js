@@ -4,6 +4,7 @@ import Input from './Input';
 import InputOTP from './OTP';
 import Checkbox from './Checkbox';
 import { cleanInput } from '../../../helpers/input';
+import PhoneNumberInput from './PhoneNumber';
 
 export default function FieldInput(props) {
     const {
@@ -45,6 +46,12 @@ export default function FieldInput(props) {
     if (type === "pincode") {
         return (
             <InputOTP {...otherProps} />
+        )
+    }
+
+    if (type === "phone") {
+        return (
+            <PhoneNumberInput {...otherProps} />
         )
     }
 
