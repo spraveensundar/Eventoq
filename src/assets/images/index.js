@@ -6,6 +6,7 @@ import stepsone from './stepsone.png';
 import stepstwo from './stepstwo.png';
 import header from './header.png';
 import headerLogo from './headerLogo.png';
+import list from './list.jpeg';
 
 export {
     event,
@@ -15,5 +16,6 @@ export {
     stepsone,
     stepstwo,
     header,
-    headerLogo
+    headerLogo,
+    list
 }
