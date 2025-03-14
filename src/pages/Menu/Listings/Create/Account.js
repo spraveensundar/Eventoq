@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, View } from 'react-native';
 
 import { stepsone } from '../../../../assets/images';
+import { navigate } from '../../../../helpers/navigation';
 import { colors, size } from '../../../../helpers/variables';
 
 import { Button } from '../../../../components/Field';
@@ -21,6 +22,7 @@ const Account = () => {
                 <View style={{ paddingTop: size.x_normal }}>
                     <Button
                         text="Next"
+                        onPress={() => navigate("Home")}
                         style={styles.nextButton}
                     />
                 </View>

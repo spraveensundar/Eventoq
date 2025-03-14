@@ -107,8 +107,8 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
                 <Button
                     text="Sign Up"
                     fetching={fetching}
-                    onPress={() => navigate("Account")}
-                    // disabled={invalid}
+                    onPress={handleSubmit(submit)}
+                    disabled={invalid}
                     buttonTextStyle={{ fontSize: fontScale(17), fontWeight: "500" }}
                 />
             </View>

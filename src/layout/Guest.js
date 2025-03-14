@@ -47,14 +47,12 @@ const GuestLayout = (props) => {
                         fill={colors.salmon}
                     />
                 </Svg>
-
                 <Svg width={106} height={144} viewBox="0 0 106 144" fill="none" style={styles.leafOne}>
                     <Path
                         d={LEAF_ONE}
                         fill={colors.salmon}
                     />
                 </Svg>
-
                 <Svg width={212} height={216} viewBox="0 0 212 216" fill="none" style={styles.leafTwo}>
                     <Path
                         d={LEAF_TWO}
@@ -68,7 +66,6 @@ const GuestLayout = (props) => {
                         fill={colors.salmon}
                     />
                 </Svg>
-
                 <Svg width={221} height={222} viewBox="0 0 221 222" fill="none" style={styles.leafFour}>
                     <Path
                         d={LEAF_FOUR}
@@ -76,7 +73,6 @@ const GuestLayout = (props) => {
                         strokeWidth={3}
                     />
                 </Svg>
-
                 <Svg width={232} height={222} viewBox="0 0 232 222" fill="none" style={styles.leafFive}>
                     <Path
                         d={LEAF_FIVE}
