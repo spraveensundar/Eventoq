@@ -22,7 +22,7 @@ const Account = () => {
                 <View style={{ paddingTop: size.x_normal }}>
                     <Button
                         text="Next"
-                        onPress={() => navigate("Home")}
+                        onPress={() => navigate("DashBoard")}
                         style={styles.nextButton}
                     />
                 </View>

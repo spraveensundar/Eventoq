@@ -10,12 +10,14 @@ import { Provider } from 'react-redux';
 import Toast from 'react-native-root-toast';
 
 import store from './src/components/store';
+import InternetCheck from './src/layout/InternetCheck';
 
 const Root = () => (
     <RootSiblingParent>
         <Provider store={store}>
             <App />
             <Toast />
+            <InternetCheck />
         </Provider>
     </RootSiblingParent>
 

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { colors, size } from "../../helpers/variables";
+import { colors, screenHeight, screenWidth, size } from "../../helpers/variables";
 
 const containerPosition = {
     position: "absolute",
@@ -34,7 +34,37 @@ const styles = StyleSheet.create({
     event: {
         width: size.xxxx_big,
         height: size.xlarge
-    }
+    },
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: colors.black
+    },
+    whiteContainer: {
+        maxHeight: screenHeight - size.large,
+        width: screenWidth - size.xx_normal,
+        backgroundColor: colors.white
+    },
+    contentContainer: {
+        justifyContent: "center",
+        paddingVertical: size.xx_tiny,
+        paddingHorizontal: size.xxx_small,
+        backgroundColor: colors.orange
+    },
+    title: {
+        color: colors.white,
+        textAlign: 'center'
+    },
+    closeIconContainer: {
+        position: "absolute",
+        right: 0,
+        padding: size.tiny
+    },
+    closeContainer: {
+        paddingRight: size.x_small
+    },
+
 })
 
 export default styles;

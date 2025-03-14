@@ -85,7 +85,10 @@ const styles = StyleSheet.create({
         position: "absolute",
         left: -35,
         bottom: -30
-    }
+    },
+    internet: {
+        padding: size.x_small
+    },
 })
 
 export default styles;

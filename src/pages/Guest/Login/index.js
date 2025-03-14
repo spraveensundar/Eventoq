@@ -96,7 +96,7 @@ const Login = ({ handleSubmit, invalid, reset }) => {
                 />
             </View>
             <View style={styles.bottomContainer}>
-                <Text style={styles.account}>Don’t have an account ?<Text onPress={() => navigate("Home")} style={{ color: colors.lightRed }}>  Sign Up</Text></Text>
+                <Text style={styles.account}>Don’t have an account ?<Text onPress={() => navigate("SignUp")} style={{ color: colors.lightRed }}>  Sign Up</Text></Text>
             </View>
         </GuestLayout>
     )

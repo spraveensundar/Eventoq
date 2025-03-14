@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { View, Text } from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
-import FormGroup from '../FormGroup';
-import styles from './styles';
+
 import { colors } from '../../../helpers/variables';
+
+import styles from './styles';
 
 const PhoneNumberInput = ({ input: { onChange, value }, meta, label, placeholder }) => {
     const phoneInputRef = useRef(null);
@@ -25,7 +26,7 @@ const PhoneNumberInput = ({ input: { onChange, value }, meta, label, placeholder
                 textContainerStyle={styles.textContainer}
                 textInputStyle={styles.phoneLabel}
                 codeTextStyle={styles.phoneLabel}
-                flagButtonStyle={styles.flag}
+                flagButtonStyle={{ display: 'none' }}
                 placeholder={placeholder}
 
             />

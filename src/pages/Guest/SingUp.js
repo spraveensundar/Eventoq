@@ -41,7 +41,7 @@ const SingUp = ({ invalid, handleSubmit, reset }) => {
         if (serverError?.message) {
             showToast(serverError.message);
         } else if (data?.success && !fetching) {
-            navigate('DashBoard');
+            navigate("Account");
         }
     }, [serverError, data]);
 
