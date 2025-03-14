@@ -8,6 +8,8 @@ import useGuestRoutes from './GuestRoutes';
 import { getStorageItem } from '../helpers/storage';
 import { navigationRef } from '../helpers/navigation';
 import BackEventHandler from '../layout/BackEventHandler';
+import ListRoute from './useListRoutes';
+import useListRoute from './useListRoutes';
 
 const App = () => {
 	const Stack = createNativeStackNavigator();
@@ -47,6 +49,7 @@ const App = () => {
 			<BackEventHandler navigationRef={navigationRef} />
 			<Stack.Navigator initialRouteName={initialRoute} screenOptions={{ headerShown: false }}>
 				{useGuestRoutes()}
+				{useListRoute()}
 			</Stack.Navigator>
 		</NavigationContainer>
 	)

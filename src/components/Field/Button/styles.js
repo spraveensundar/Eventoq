@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { colors, fontScale, normalize, size } from "../../../helpers/variables";
+import { colors, fonts, fontScale, normalize, size } from "../../../helpers/variables";
 
 const styles = StyleSheet.create({
     buttonContainer: {
@@ -44,6 +44,11 @@ const styles = StyleSheet.create({
         marginRight: size.xx_tiny,
         color: colors.white,
         fontSize: fontScale(20)
+    },
+    content: {
+        fontSize: fontScale(17),
+        fontFamily: fonts.poppinsSemiBold,
+        color: colors.black
     }
 })
 

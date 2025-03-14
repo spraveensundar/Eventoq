@@ -15,7 +15,8 @@ const Button = React.forwardRef((props, ref) => {
         disabled,
         type,
         buttonTextStyle = {},
-        color
+        color,
+        style
     } = props;
 
     const { textColor, backgroundColor } = getColors(color, type);
@@ -52,11 +53,12 @@ const Button = React.forwardRef((props, ref) => {
             {
                 backgroundColor,
                 opacity: disabled ? 0.5 : 1,
+                ...style
             }
             ]}>
                 {
                     fetching === false && (
-                        <Text style={[{ color: textColor }, buttonTextStyle]}>{text}</Text>
+                        <Text style={[styles.content, { color: textColor }, buttonTextStyle]}>{text}</Text>
                     )
                 }
                 {

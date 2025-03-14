@@ -2,9 +2,10 @@ import React from 'react';
 import { ScrollView, StatusBar, View } from 'react-native';
 
 import Header from './Header';
-import styles from './styles';
 import { colors } from '../../helpers/variables';
 import KeyboardAvoiding from '../../layout/KeyboardAvoiding';
+
+import styles from './styles';
 
 const Container = (props) => {
     const {
@@ -14,6 +15,7 @@ const Container = (props) => {
         leftIcon,
         rightIcon,
         header = true,
+        style
     } = props;
 
     return (
@@ -38,7 +40,7 @@ const Container = (props) => {
                     showsVerticalScrollIndicator={false}
                     style={styles.subContainer}
                     contentContainerStyle={styles.scrollContent}>
-                    <View style={styles.content}>
+                    <View style={[styles.content, style]}>
                         {children}
                     </View>
                 </ScrollView>

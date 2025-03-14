@@ -71,5 +71,6 @@ export const colors = {
     dawn: "#A1A1A1",
     smoke: "rgba(189, 189, 189, 1)",
     mistyRose: "rgba(255, 230, 230, 1)",
-    lightRed: "rgba(255, 173, 173, 1)"
+    lightRed: "rgba(255, 173, 173, 1)",
+    salmon: "#FF7070"
 }

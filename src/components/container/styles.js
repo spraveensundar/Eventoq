@@ -13,7 +13,7 @@ const containerPosition = {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.white,
+        backgroundColor: colors.white
     },
     subContainer: {
         flex: 1
@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
         paddingLeft: size.regular
     },
     scrollContent: {
+        flexGrow: 1,
         paddingBottom: size.xx_medium
-    },
+    }
 })
 
 export default styles;

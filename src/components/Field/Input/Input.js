@@ -26,7 +26,8 @@ const Input = (props) => {
     }
 
     const onBlurHandler = (e) => {
-        onBlur(e)
+        onBlur(e);
+        setTimeout(() => setFocus(false));
     }
 
     useEffect(() => {
@@ -38,6 +39,7 @@ const Input = (props) => {
         <FormGroup
             meta={meta}
             label={label}
+            focus={focus}
             disabled={disabled}>
             <TextInput
                 value={values}
@@ -47,9 +49,9 @@ const Input = (props) => {
                 onBlur={onBlurHandler}
                 placeholder={placeholder}
                 onChangeText={handleOnChange}
-                onFocus={() => setFocus(true)}
                 style={styles.inputContainer}
                 placeholderTextColor={colors.dawn}
+                onFocus={() => setTimeout(() => setFocus(true))}
                 secureTextEntry={secureTextEntry}
                 underlineColorAndroid="transparent"
                 keyboardType={inputMode}

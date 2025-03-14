@@ -16,37 +16,37 @@ const Home = () => {
             <Container header={false}>
                 <View style={styles.row}>
                     <Card
-                        value="8"
+                        value="0"
                         title="Total Request"
                         bgColor={colors.mistyRose}
                         iconColor={colors.lightRed}
                     />
                     <Card
-                        value="4"
+                        value="0"
                         title="Bookings Confirmed"
                         bgColor={colors.lightRed}
                     />
                 </View>
                 <Card
-                    value="36,00,000"
+                    value="0"
                     title="Payment Received"
                     bgColor={colors.mistyRose}
                     iconColor={colors.lightRed}
                 />
                 <Card
-                    value="12,00,000"
+                    value="0"
                     title="Pending Payment"
                     bgColor={colors.mistyRose}
                     iconColor={colors.lightRed}
                 />
                 <View style={[styles.row, { paddingBottom: size.big }]}>
                     <Card
-                        value="8"
+                        value="0"
                         title="Function Dates"
                         bgColor={colors.lightRed}
                     />
                     <Card
-                        value="4"
+                        value="0"
                         title="Function Completed"
                         bgColor={colors.lightRed}
                     />
@@ -56,4 +56,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Home;

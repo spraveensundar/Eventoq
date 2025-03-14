@@ -10,6 +10,7 @@ export default function FormGroup(props) {
         children = false,
         meta = {},
         disabled = false,
+        focus = false,
         label = false,
     } = props;
 
@@ -19,7 +20,7 @@ export default function FormGroup(props) {
     return (
         <View style={styles.formContainer}>
             <Text style={styles.label}>{label}</Text>
-            <View style={styles.form}>
+            <View style={[styles.form, isShow ? { borderColor: colors.red } : "", focus ? { borderColor: colors.dark } : ""]}>
                 {children}
             </View>
             {

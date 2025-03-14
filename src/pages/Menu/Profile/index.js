@@ -11,7 +11,6 @@ import useSetup from '../../../hooks/useAuth';
 import { colors, size } from '../../../helpers/variables';
 import { getStorageItem } from '../../../helpers/storage';
 
-
 import styles from './styles';
 
 const Profile = () => {

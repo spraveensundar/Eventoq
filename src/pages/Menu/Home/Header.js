@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-
 import { eventtoq } from '../../../assets/images';
 import { colors, size } from '../../../helpers/variables';
 

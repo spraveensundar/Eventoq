@@ -4,11 +4,11 @@ import { View } from 'react-native';
 import Icon from '../../../components/Icon';
 import { Text } from '../../../components/Typography';
 
-import { size } from '../../../helpers/variables';
+import { colors, size } from '../../../helpers/variables';
 
 import styles from './styles';
 
-const Card = ({ title, value, bgColor, iconColor = "rgba(255, 230, 230, 1)" }) => {
+const Card = ({ title, value, bgColor, iconColor = colors.mistyRose }) => {
     return (
         <View style={[styles.cardContainer, { backgroundColor: bgColor }]}>
             <View style={styles.title}>

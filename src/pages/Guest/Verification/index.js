@@ -53,7 +53,7 @@ const Verification = ({ handleSubmit, invalid, reset }) => {
                 label="Phone"
                 type="phone"
                 inputMode="numeric"
-                validate={[required(), phoneNumberValidator]}
+                validate={[required()]}
                 placeholder="Enter Your Phone Number"
             />
             <View style={styles.loginButton}>
