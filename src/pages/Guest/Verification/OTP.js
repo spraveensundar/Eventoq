@@ -11,7 +11,7 @@ import useSetup from '../../../hooks/useAuth';
 import GuestLayout from '../../../layout/Guest';
 import { showToast } from '../../../helpers/notify'
 import { colors, fonts, size } from '../../../helpers/variables';
-import { goBack, navigate } from '../../../helpers/navigation';
+import { navigate } from '../../../helpers/navigation';
 
 import styles from '../styles';
 

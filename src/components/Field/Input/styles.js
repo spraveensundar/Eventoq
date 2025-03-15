@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
     inputContainer: {
         width: normalize(330),
         paddingHorizontal: size.x_small,
-        fontWeight: "400",
+        fontSize: fontScale(14),
         height: size.big,
-        lineHeight: fontScale(21)
+        fontFamily: fonts.poppinsMedium
     },
     checkboxWrapper: {
         flexDirection: "row",
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         borderColor: colors.dawn,
         borderWidth: 1,
         borderRadius: 8,
+        backgroundColor: "transparent",
         height: size.big
     },
     formContainer: {
